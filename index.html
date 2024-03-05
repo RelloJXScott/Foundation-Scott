@@ -220,12 +220,13 @@
             <input type="password" id="password" placeholder="Choose a password" required>
 
             <button onclick="signup()">Sign Up</button>
+            <button onclick="login()">Login</button>
         </div>
     </div>
 
     <div id="portal" class="hidden">
         <h2>Portal Page</h2>
-        <p>Welcome to Foundation Scott Portal, where you can login or create an account.</p>
+        <p>This is the portal page content. You can add login and sign up buttons here.</p>
         <button onclick="openAuth()">Login</button>
         <button onclick="openAuth()">Sign Up</button>
     </div>
@@ -267,6 +268,21 @@
 
             // Show verification input
             showVerificationInput();
+        }
+
+        function login() {
+            const email = emailInput.value;
+            const password = passwordInput.value;
+
+            // Simulate server-side authentication
+            const isLoginSuccessful = email === "test@example.com" && password === "password";
+
+            if (isLoginSuccessful) {
+                alert("Login successful!");
+                showPage("about");
+            } else {
+                alert("Invalid email or password. Please try again.");
+            }
         }
 
         function showVerificationInput() {
@@ -319,6 +335,12 @@
         function showPage(pageId) {
             Object.values(pages).forEach(page => page.classList.add("hidden"));
             pages[pageId].classList.remove("hidden");
+
+            // Additional logic for the portal page
+            if (pageId === "portal") {
+                // Reset the authentication form on each visit to the portal
+                resetAuthForm();
+            }
         }
 
         function openAboutUs() {
@@ -335,6 +357,12 @@
 
         function openPortal() {
             showPage("portal");
+        }
+
+        function resetAuthForm() {
+            emailInput.value = "";
+            usernameInput.value = "";
+            passwordInput.value = "";
         }
     </script>
 
