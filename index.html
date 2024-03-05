@@ -70,6 +70,18 @@
   .header button:hover, .game-box button:hover { 
     background-color: #555;
   }
+  .header button, .mod-box button { 
+    padding: 10px 20px; 
+    margin: 0 5px; 
+    background-color: #444; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+  }
+  .header button:hover, .mod-box button:hover { 
+    background-color: #555;
+  }
   .hidden { 
     display: none; 
   }
@@ -127,12 +139,12 @@
 
 <div id="mods" class="hidden">
   <h2>Mods</h2>
-  <div class="game-box">
+  <div class="mods-box">
     <h3>Scott RPG - Mod Template</h3>
     <p class="game-description">This is the template for modding on Scott RPG</p>
     <button onclick="window.location.href='https://github.com/RelloJXScott/Mod-Template/archive/refs/heads/main.zip'">Download</button>
   </div>
-  <div class="game-box">
+  <div class="mods-box">
     <h3>Scott RPG - Norse Mythology Mod</h3>
     <p class="game-description">This mod adds Norse Mythological creatures, armor, and weapons to Scott RPG</p>
     <button onclick="window.location.href='https://github.com/RelloJXScott/Norse-Mythology-Mod/archive/refs/heads/main.zip'">Download</button>
