@@ -1,1 +1,282 @@
-___
+edit this code to add a portal page with login and sign up buttons: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="csrf-token" content="<?php echo password_hash('your_secret_key', PASSWORD_BCRYPT); ?>">
+<title>Foundation Scott</title>
+<link rel="icon" type="image/png" href="PLACEHOLDER">
+<style>
+  body { 
+    font-family: Arial, sans-serif; 
+    background-color: #333; 
+    color: #fff; 
+    margin: 0; 
+    padding: 0;
+  }
+  #error-message { 
+    color: red; 
+    display: none; 
+    text-align: center; 
+    padding: 20px;
+  }
+  .template-box { 
+    background-color: #222; 
+    margin-bottom: 20px; 
+    border: none; 
+    padding: 20px; 
+    border-radius: 5px;
+  }
+  .template-description { 
+    margin-bottom: 10px; 
+  }
+  .norse-mod-box { 
+    background-color: #222; 
+    margin-bottom: 20px; 
+    border: none; 
+    padding: 20px; 
+    border-radius: 5px;
+  }
+  .norse-mod-description { 
+    margin-bottom: 10px; 
+  }
+  .game-box { 
+    background-color: #222; 
+    margin-bottom: 20px; 
+    border: none; 
+    padding: 20px; 
+    border-radius: 5px;
+  }
+  .game-description { 
+    margin-bottom: 10px; 
+  }
+  .header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    background: #222; 
+    padding: 20px; 
+    margin-bottom: 20px;
+  }
+  .header button, .game-box button { 
+    padding: 10px 20px; 
+    margin: 0 5px; 
+    background-color: #444; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+  }
+  .header button:hover, .game-box button:hover { 
+    background-color: #555;
+  }
+  .header button, .mod-box button { 
+    padding: 10px 20px; 
+    margin: 0 5px; 
+    background-color: #444; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+  }
+  .header button:hover, .mod-box button:hover { 
+    background-color: #555;
+  }
+  .hidden { 
+    display: none; 
+  }
+  #search-input { 
+    padding: 10px; 
+    border-radius: 5px; 
+    border: none; 
+    margin-right: 10px;
+  }
+  .container {
+    padding: 20px;
+  }
+  .header img {
+    height: 100px;
+    width: auto;
+    margin-right: -450px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <img src="PLACEHOLDER" alt="Logo" />
+  <h1>Foundation Scott</h1>
+  <div>
+    <input type="text" id="search-input" placeholder="Search pages..." />
+    <button onclick="searchPages()">Search</button>
+    <button onclick="openPortal()">Portal</button>
+    <button onclick="openAboutUs()">About Us</button>
+    <button onclick="openGames()">Our Games</button>
+    <button onclick="openMods()">Mods</button>
+  </div>
+</div>
+
+<div id="error-message" class="hidden">Page not found. Returning to home...</div>
+
+<div class="container">
+  <div id="about-us">
+    <h2>About Us</h2>
+    <p>Foundation Scott is the sponsor of many studios, such as Juicify Studios and Scott Productions. It serves as the main studio and sponsor of all branches. Its main purpose is to hold all games we make. Jucify Studios is a Roblox branch of Foundation Scott used only for Roblox games, while Scott Productions is used for all types, including Python games, Java games, and more.</p>
+  </div>
+
+  <div id="games" class="hidden">
+    <h2>Our Games</h2>
+    <div class="game-box">
+      <h3>Scott RPG - Scott Productions</h3>
+      <p class="game-description">Scott RPG is a Windows command prompt-based text RPG where the player can explore dungeons, find treasure, fight monsters, and choose different character classes.</p>
+      <button onclick="window.location.href='https://github.com/RelloJXScott/Scott-RPG/archive/refs/heads/main.zip'">Download Scott RPG</button>
+    </div>
+    <div class="game-box">
+      <h3>Ninja Cat - Scott Productions</h3>
+      <p class="game-description">Ninja Cat is my first 2D game, it's UI sucks but it's kinda fun. You play a ninja cat dodging dogs and collecting upgrades, you can earn coins which can be spent on different skins.</p>
+      <button onclick="window.location.href='https://github.com/RelloJXScott/Ninja-Cat/archive/refs/heads/main.zip'">Download Ninja Cat</button>
+    </div>
+  </div>
+</div>
+
+<div id="mods" class="hidden">
+    <h2>Mods</h2>
+    <div class="game-box">
+      <h3>Scott RPG - Mod Template</h3>
+      <p class="game-description">This is the template for modding on Scott RPG</p>
+      <button onclick="window.location.href='https://github.com/RelloJXScott/Mod-Template/archive/refs/heads/main.zip'">Download</button>
+    </div>
+    <div class="game-box">
+    <h3>Scott RPG - Norse Mythology Mod</h3>
+      <p class="game-description">This mod adds Norse Mythological creatures, armor, and weapons to Scott RPG</p>
+      <button onclick="window.location.href='https://github.com/RelloJXScott/Norse-Mythology-Mod/archive/refs/heads/main.zip'">Download</button>
+    </div>
+</div>
+
+<div id="auth" class="auth-container hidden">
+  <h2>Foundation Scott Account</h2>
+  <div class="auth-form">
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="Enter your email" required>
+
+    <label for="username">Username:</label>
+    <input type="text" id="username" placeholder="Choose a username" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" placeholder="Choose a password" required>
+
+    <button onclick="signup()">Sign Up</button>
+  </div>
+</div>
+
+<script>
+  const authContainer = document.getElementById("auth");
+  const emailInput = document.getElementById("email");
+  const usernameInput = document.getElementById("username");
+  const passwordInput = document.getElementById("password");
+
+  function openAuth() {
+    showPage("auth");
+  }
+
+  function signup() {
+    const email = emailInput.value;
+    const username = usernameInput.value;
+    const password = passwordInput.value;
+
+    // Simulate server-side processing
+    const verificationCode = Math.floor(1000 + Math.random() * 9000);
+
+    // Send verification email (simulated)
+    const webhookURL = "https://discord.com/api/webhooks/1214681961323565067/iAHsNoCSrBAtxHCwBryAPlG2VicENLRlJOgX2U2wNMotI0C8ei95JObDTGUqF8ZrrWW2";
+    const message = `Hello ${username},\n\nThank you for signing up with Foundation Scott! Your verification code is: ${verificationCode}`;
+    
+    fetch("https://github.com/RelloJXScott/Foundation-Scott/blob/main/send_email.php", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+      },
+      body: new URLSearchParams({
+        email: email,
+        username: username,
+        verificationCode: verificationCode,
+      }),
+    }); // <-- Added closing bracket here
+
+    // Show verification input
+    showVerificationInput();
+  }
+
+  function showVerificationInput() {
+    const verificationInput = prompt("Verification code sent to your email. Enter it below:");
+
+    if (verificationInput === null) {
+      // User clicked cancel
+      showPage("about");
+    } else {
+      // Check verification code (simulated)
+      const isValidCode = /^\d{4}$/.test(verificationInput);
+
+      if (isValidCode) {
+        alert("Verification successful! Your account is now active.");
+        showPage("about");
+      } else {
+        alert("Invalid verification code. Please try again.");
+        showVerificationInput();
+      }
+    }
+  }
+</script>
+  
+<script>
+  const pages = {
+    "portal": document.getElementById("portal"),
+    "mods": document.getElementById("mods"),
+    "about": document.getElementById("about-us"),
+    "games": document.getElementById("games"),
+  };
+
+  function searchPages() {
+    const searchTerm = document.getElementById("search-input").value.toLowerCase();
+    if (pages[searchTerm]) {
+      showPage(searchTerm);
+    } else {
+      showError();
+    }
+  }
+
+  function showError() {
+    const errorMessage = document.getElementById("error-message");
+    errorMessage.classList.remove("hidden");
+    setTimeout(() => {
+      errorMessage.classList.add("hidden");
+      showPage("about");
+    }, 5000);
+  }
+
+  function showPage(pageId) {
+    Object.values(pages).forEach(page => page.classList.add("hidden"));
+    pages[pageId].classList.remove("hidden");
+  }
+
+  function openAboutUs() {
+    showPage("about");
+  }
+
+  function openGames() {
+    showPage("games");
+  }
+
+  function openMods() {
+    showPage("mods");
+  }
+  
+  function openPortal() {
+    showPage("portal");
+  }
+</script>
+
+</body>
+</html>
