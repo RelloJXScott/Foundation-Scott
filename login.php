@@ -3,9 +3,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
     
-    // Retrieve user information from your database based on the provided email
-    // Validate the password using password_verify() function
-    
     // Assuming $userData is an associative array with user information
     $isValidLogin = password_verify($password, $userData['password']);
     
@@ -18,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 } else {
     // Redirect or handle unauthorized access
-    header("Location: index.php");
+    header("Location: index.html");
     exit();
 }
 ?>
