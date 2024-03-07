@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     
     // Save user information to Discord channel using webhook
-    $webhookURL = "YOUR_DISCORD_WEBHOOK_URL";
+    $webhookURL = "https://discord.com/api/webhooks/1214681961323565067/iAHsNoCSrBAtxHCwBryAPlG2VicENLRlJOgX2U2wNMotI0C8ei95JObDTGUqF8ZrrWW2";
     $message = "New user signup:\nEmail: $email\nUsername: $username";
     
     $data = array('content' => $message);
